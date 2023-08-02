@@ -1,0 +1,5 @@
+<resources>
+    <string name="header_label_price">Price (USD)</string>
+    <string name="header_label_quantity">Qty</string>
+    <string name="header_label_time">Time</string>
+</resources>

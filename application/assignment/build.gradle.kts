@@ -44,23 +44,20 @@ dependencies {
 
     implementation(project(":common:bloc"))
     implementation(project(":android:common:bloc_view_model"))
+
+    implementation(project(":features:orderbook:domain"))
+    implementation(project(":features:orderbook:presentation"))
+    implementation(project(":features:orderbook:repository"))
+    implementation(project(":features:orderbook:datasource"))
     implementation(project(":features:orderbook:ui"))
+
+    implementation(project(":features:recenttrades:domain"))
+    implementation(project(":features:recenttrades:presentation"))
+    implementation(project(":features:recenttrades:repository"))
+    implementation(project(":features:recenttrades:datasource"))
     implementation(project(":features:recenttrades:ui"))
 
     implementation(Libraries.Hilt.android)
     kapt(Libraries.Hilt.compiler)
 
-//    implementation("androidx.core:core-ktx:1.9.0")
-//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-//    implementation("androidx.activity:activity-compose:1.7.2")
-//    implementation("androidx.compose.ui:ui")
-//    implementation("androidx.compose.ui:ui-graphics")
-//    implementation("androidx.compose.ui:ui-tooling-preview")
-//    implementation("androidx.compose.material3:material3")
-//    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-//
-//    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-//    debugImplementation("androidx.compose.ui:ui-tooling")
-//    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

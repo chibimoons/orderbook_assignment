@@ -7,12 +7,12 @@ import androidx.compose.runtime.LaunchedEffect
 fun <S : Any, A : Any> LaunchInitialAction(
     initialState: S,
     initialAction: A,
-    bloc: BlocViewModel<S, A>,
+    viewModel: BlocViewModel<S, A>,
     curState: S
 ) {
-    LaunchedEffect(bloc) {
+    LaunchedEffect(viewModel) {
         if (curState == initialState) {
-            bloc.dispatch(initialAction)
+            viewModel.dispatch(initialAction)
         }
     }
 }

@@ -2,5 +2,5 @@
     <string name="app_name">assignment</string>
     <string name="tab_label_chart">Chart</string>
     <string name="tab_label_order_book">Order Book</string>
-    <string name="tab_label_recent_trades">Recent trades</string>
+    <string name="tab_label_recent_trades">Recent Trades</string>
 </resources>

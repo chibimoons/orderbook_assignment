@@ -3,6 +3,8 @@ import com.junyoung.ha.buildsrc.Libraries
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 apply {
@@ -16,6 +18,18 @@ android {
     namespace = "com.junyoung.hafeatures.recenttrade.ui"
 }
 
-dependencies {
+kapt {
+    correctErrorTypes = true
+}
 
+dependencies {
+    implementation(project(":common:bloc"))
+    implementation(project(":android:common:bloc_view_model"))
+
+    implementation(project(":features:common:domain"))
+    implementation(project(":features:recenttrades:domain"))
+    implementation(project(":features:recenttrades:presentation"))
+
+    implementation(Libraries.Hilt.android)
+    kapt(Libraries.Hilt.compiler)
 }
