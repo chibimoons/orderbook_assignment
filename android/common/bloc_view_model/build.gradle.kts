@@ -13,9 +13,9 @@ apply {
 }
 
 android {
-    namespace = "com.junyoung.ha.features.orderbook.ui"
+    namespace = "com.junyoung.ha.blocviewmodel"
 }
 
 dependencies {
-
+    implementation(project(":common:bloc"))
 }

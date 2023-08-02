@@ -7,15 +7,15 @@ plugins {
 
 apply {
     from("$rootDir/buildCommonDependencies/android-common-dependencies.kts")
+    from("$rootDir/buildCommonDependencies/android-ui-dependencies.kts")
     from("$rootDir/buildCommonDependencies/test-dependencies.kts")
     from("$rootDir/buildCommonDependencies/test-android-dependencies.kts")
 }
 
 android {
-    namespace = "com.junyoung.ha.presentation"
+    namespace = "com.junyoung.hafeatures.recenttrade.ui"
 }
 
 dependencies {
-    implementation(project(":common:bloc"))
-    implementation(Libraries.AndroidX.LifeCycle.viewModelKtx)
+
 }

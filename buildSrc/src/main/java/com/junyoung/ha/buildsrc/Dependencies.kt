@@ -9,10 +9,28 @@ object Libraries {
     }
 
     object AndroidX {
-        object LifeCycle {
-            private const val version = "2.6.1"
-            const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+
+        object Compose {
+            const val bom = "androidx.compose:compose-bom:2023.03.00"
+            const val runtime = "androidx.compose.runtime:runtime"
+            const val material3 = "androidx.compose.material3:material3"
+            const val foundation = "androidx.compose.foundation:foundation"
+            const val layout = "androidx.compose.foundation:foundation-layout"
+            const val tooling = "androidx.compose.ui:ui-tooling"
         }
+
+        object Navigation {
+            private const val version = "2.6.0"
+            const val compose = "androidx.navigation:navigation-compose:$version"
+            const val viewModel = "androidx.hilt:hilt-navigation-compose:1.0.0"
+        }
+    }
+
+    object Hilt {
+        const val version = "2.44"
+        const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+        const val android = "com.google.dagger:hilt-android:$version"
+        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
     object Test {

@@ -1,9 +1,9 @@
-package com.junyoung.ha.common.presentation
+package com.junyoung.ha.common.blocviewmodel
 
 import androidx.lifecycle.ViewModel
 import com.junyoung.ha.common.bloc.Bloc
 
-open class BlocViewModel<STATE : ViewState, ACTION : ViewAction>(
+open class BlocViewModel<STATE: Any, ACTION: Any>(
     private val bloc: Bloc<STATE, ACTION>
 ) : ViewModel() {
 
