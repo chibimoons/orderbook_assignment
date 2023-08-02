@@ -1,6 +1,5 @@
 package com.junyoung.ha.features.recenttrades.ui
 
-import android.util.Log
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -61,7 +60,6 @@ fun RecentTradesRenderer(
 @Composable
 private fun Content(state: RecentTradesUi.State, onAction: (RecentTradesUi.Action) -> Unit) {
     val recentTrades by state.recentTradesFlow.collectAsState(initial = RecentTrades.EMPTY)
-    Log.d("RecentTradesRenderer", "Content ${recentTrades.tradeInfoList.size}")
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
@@ -85,7 +83,6 @@ private fun Content(state: RecentTradesUi.State, onAction: (RecentTradesUi.Actio
 @Composable
 private fun Header() {
     Column {
-        Divider(thickness = 1.dp, color = Color.Gray.copy(alpha = 0.8f))
         Row(
             modifier = Modifier
                 .fillMaxWidth()

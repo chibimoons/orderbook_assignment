@@ -16,6 +16,6 @@ android {
 
 dependencies {
     implementation(project(":features:common:domain"))
-    implementation(project(":features:recenttrades:domain"))
-    implementation(project(":features:recenttrades:repository"))
+    implementation(project(":features:orderbook:domain"))
+    implementation(project(":features:orderbook:repository"))
 }

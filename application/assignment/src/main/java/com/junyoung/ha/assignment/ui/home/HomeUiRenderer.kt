@@ -39,10 +39,17 @@ private fun Content(state: HomeUi.State, onAction: (HomeUi.Action) -> Unit) {
                 )
             }
         }
+
         when (state.tabs[state.currentTabIndex]) {
             HomeUi.Tab.CHART -> TBDComposable(modifier = Modifier.weight(1f))
-            HomeUi.Tab.ORDER_BOOK -> OrderBookRenderer()
-            HomeUi.Tab.RECENT_TRADE -> RecentTradesRenderer(viewModel = hiltViewModel(), modifier = Modifier.weight(1f))
+            HomeUi.Tab.ORDER_BOOK -> OrderBookRenderer(
+                viewModel = hiltViewModel(),
+                modifier = Modifier.weight(1f)
+            )
+            HomeUi.Tab.RECENT_TRADE -> RecentTradesRenderer(
+                viewModel = hiltViewModel(),
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }

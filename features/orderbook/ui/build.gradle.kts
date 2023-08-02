@@ -3,6 +3,8 @@ import com.junyoung.ha.buildsrc.Libraries
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 apply {
@@ -17,5 +19,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:bloc"))
+    implementation(project(":android:common:bloc_view_model"))
 
+    implementation(project(":features:common:domain"))
+    implementation(project(":features:orderbook:domain"))
+    implementation(project(":features:orderbook:presentation"))
+
+    implementation(Libraries.Hilt.android)
+    kapt(Libraries.Hilt.compiler)
 }
