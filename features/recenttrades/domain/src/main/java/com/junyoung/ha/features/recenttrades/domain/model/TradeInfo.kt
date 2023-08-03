@@ -14,7 +14,7 @@ data class TradeInfo(
     companion object {
         val EMPTY = TradeInfo(
             id = "",
-            tradeType = TradeType.UNKNOWN,
+            tradeType = TradeType.BUY,
             price = Price.ZERO,
             quantity = BigDecimal.ZERO,
             tradeAt = LocalDateTime.MIN

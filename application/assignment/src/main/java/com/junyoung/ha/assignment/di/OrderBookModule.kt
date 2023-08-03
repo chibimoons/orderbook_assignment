@@ -2,7 +2,7 @@ package com.junyoung.ha.assignment.di
 
 import com.junyoung.ha.common.bloc.Bloc
 import com.junyoung.ha.features.orderbook.datasource.OrderBookDataSource
-import com.junyoung.ha.features.orderbook.datasource.OrderBookDataSourceImpl
+import com.junyoung.ha.features.orderbook.datasource.OrderBookWebSocketDataSourceImpl
 import com.junyoung.ha.features.orderbook.datasource.OrderBookDataSourceMock
 import com.junyoung.ha.features.orderbook.domain.repository.OrderBookRepository
 import com.junyoung.ha.features.orderbook.domain.usecase.OrderBookUseCase
@@ -55,7 +55,7 @@ class OrderBookModule {
     @InstallIn(SingletonComponent::class)
     class DataSourceModule {
         companion object {
-            const val USING_MOCK = true
+            const val USING_MOCK = false
         }
 
         @Provides
@@ -63,7 +63,7 @@ class OrderBookModule {
             return if (USING_MOCK) {
                 OrderBookDataSourceMock()
             } else {
-                OrderBookDataSourceImpl()
+                OrderBookWebSocketDataSourceImpl()
             }
         }
     }

@@ -20,7 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.junyoung.ha.common.blocviewmodel.LaunchInitialAction
 import com.junyoung.ha.features.common.domain.Price
 import com.junyoung.ha.features.common.domain.toFormattedString
@@ -159,7 +161,8 @@ private fun QuantityText(quantity: BigDecimal, modifier: Modifier, contentAlignm
     ) {
         Text(
             text = quantity.toQuantityFormat(),
-            color = Color.Black
+            color = Color.Black,
+            style = TextStyle(fontSize = 14.sp)
         )
     }
 }
@@ -179,7 +182,8 @@ private fun BuyPriceText(price: Price, relativeQuantity: Float, modifier: Modifi
         Text(
             modifier = Modifier.padding(end = 2.dp),
             text = price.toFormattedString(),
-            color = Color.Green
+            color = Color.Green,
+            style = TextStyle(fontSize = 14.sp)
         )
     }
 }
@@ -220,7 +224,8 @@ private fun SellPriceText(price: Price, relativeQuantity: Float, modifier: Modif
         Text(
             modifier = Modifier.padding(start = 2.dp),
             text = price.toFormattedString(),
-            color = Color.Red
+            color = Color.Red,
+            style = TextStyle(fontSize = 14.sp)
         )
     }
 }

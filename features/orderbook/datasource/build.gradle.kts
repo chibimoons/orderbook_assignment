@@ -18,4 +18,6 @@ dependencies {
     implementation(project(":features:common:domain"))
     implementation(project(":features:orderbook:domain"))
     implementation(project(":features:orderbook:repository"))
+
+    implementation(com.junyoung.ha.buildsrc.Libraries.Network.okhttp)
 }
