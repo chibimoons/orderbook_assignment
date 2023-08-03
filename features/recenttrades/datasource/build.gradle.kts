@@ -1,3 +1,5 @@
+import com.junyoung.ha.buildsrc.Libraries
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -18,4 +20,6 @@ dependencies {
     implementation(project(":features:common:domain"))
     implementation(project(":features:recenttrades:domain"))
     implementation(project(":features:recenttrades:repository"))
+
+    implementation(Libraries.Network.okhttp)
 }

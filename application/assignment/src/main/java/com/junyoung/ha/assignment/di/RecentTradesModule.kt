@@ -2,7 +2,7 @@ package com.junyoung.ha.assignment.di
 
 import com.junyoung.ha.common.bloc.Bloc
 import com.junyoung.ha.features.recenttrades.datasource.RecentTradesDataSource
-import com.junyoung.ha.features.recenttrades.datasource.RecentTradesDataSourceImpl
+import com.junyoung.ha.features.recenttrades.datasource.RecentTradesWebSocketDataSourceImpl
 import com.junyoung.ha.features.recenttrades.datasource.RecentTradesDataSourceMock
 import com.junyoung.ha.features.recenttrades.domain.repository.RecentTradesRepository
 import com.junyoung.ha.features.recenttrades.domain.usecase.RecentTradesUseCase
@@ -55,7 +55,7 @@ class RecentTradesModule {
     @InstallIn(SingletonComponent::class)
     class DataSourceModule {
         companion object {
-            const val USING_MOCK = true
+            const val USING_MOCK = false
         }
 
         @Provides
@@ -63,7 +63,7 @@ class RecentTradesModule {
             return if (USING_MOCK) {
                 RecentTradesDataSourceMock()
             } else {
-                RecentTradesDataSourceImpl()
+                RecentTradesWebSocketDataSourceImpl()
             }
         }
     }

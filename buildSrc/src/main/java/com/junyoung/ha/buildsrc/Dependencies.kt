@@ -33,6 +33,10 @@ object Libraries {
         const val compiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
+    object Network {
+        const val okhttp = "com.squareup.okhttp3:okhttp:4.11.0"
+    }
+
     object Test {
         private const val junitVersion = "4.13.2"
         const val junit = "junit:junit:$junitVersion"

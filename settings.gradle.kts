@@ -34,3 +34,4 @@ include(":features:recenttrades:datasource")
 include(":features:recenttrades:ui")
 
 include(":application:assignment")
+include(":application:websocketsample")

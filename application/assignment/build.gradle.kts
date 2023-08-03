@@ -32,9 +32,7 @@ android {
             )
         }
     }
-
 }
-
 
 kapt {
     correctErrorTypes = true

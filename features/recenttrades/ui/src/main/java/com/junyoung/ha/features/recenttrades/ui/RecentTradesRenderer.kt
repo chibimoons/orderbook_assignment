@@ -71,9 +71,9 @@ private fun Content(state: RecentTradesUi.State, onAction: (RecentTradesUi.Actio
 
         items(
             recentTrades.tradeInfoList,
-            key = { item -> "${item.tradeType.name}:${item.price.toFormattedString()}:${item.quantity}:${item.tradeAt}}" }
+            key = { item -> "${item.id}:${item.tradeType.name}:${item.price.toFormattedString()}:${item.quantity}:${item.tradeAt}}" }
         ) {
-            TradeInfoRow(tradeInfo = it)
+            TradeInfoRow(tradeInfo = it, recentTrades.isNew(it.id))
         }
 
     }
@@ -113,10 +113,10 @@ private fun HeaderText(text: String, modifier: Modifier, contentAlignment: Align
 }
 
 @Composable
-private fun TradeInfoRow(tradeInfo: TradeInfo) {
+private fun TradeInfoRow(tradeInfo: TradeInfo, isNew: Boolean) {
     val backgroundColor = remember(tradeInfo) {
         Animatable(
-            if (tradeInfo.isNew()) {
+            if (isNew) {
                 getTradeTypeColor(tradeType = tradeInfo.tradeType).copy(alpha = 0.1f)
             } else {
                 Color.White
@@ -125,7 +125,7 @@ private fun TradeInfoRow(tradeInfo: TradeInfo) {
     }
 
     LaunchedEffect(tradeInfo) {
-        if (tradeInfo.isNew()) {
+        if (isNew) {
             backgroundColor.animateTo(Color.White, animationSpec = tween(200))
         }
     }
@@ -150,6 +150,7 @@ private fun getTradeTypeColor(tradeType: TradeType): Color {
     return when(tradeType) {
         TradeType.SELL -> Color.Red
         TradeType.BUY -> Color.Green
+        TradeType.UNKNOWN -> Color.Transparent
     }
 }
 
