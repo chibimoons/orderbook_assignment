@@ -1,9 +1,13 @@
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
+    id("kotlin")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+apply {
+    from("$rootDir/buildCommonDependencies/pure-kotlin-dependencies.kts")
+    from("$rootDir/buildCommonDependencies/test-dependencies.kts")
+}
+
+dependencies {
+    implementation(project(":common:bloc"))
+    implementation(project(":features:orderbook:domain"))
 }
