@@ -11,9 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,9 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.junyoung.ha.common.blocviewmodel.LaunchInitialAction
 import com.junyoung.ha.features.common.domain.Price
 import com.junyoung.ha.features.common.domain.toFormattedString
@@ -62,22 +59,15 @@ fun RecentTradesRenderer(
 @Composable
 private fun Content(state: RecentTradesUi.State, onAction: (RecentTradesUi.Action) -> Unit) {
     val recentTrades by state.recentTradesFlow.collectAsState(initial = RecentTrades.EMPTY)
-    LazyColumn(
+    Column(
         modifier = Modifier
-            .fillMaxSize(),
-        state = rememberLazyListState()
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
-        item {
-            Header()
-        }
-
-        items(
-            recentTrades.tradeInfoList,
-            key = { item -> "${item.id}:${item.tradeType.name}:${item.price.toFormattedString()}:${item.quantity}:${item.tradeAt}}" }
-        ) {
+        Header()
+        recentTrades.tradeInfoList.forEach {
             TradeInfoRow(tradeInfo = it, recentTrades.isNew(it.id))
         }
-
     }
 }
 

@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
@@ -51,23 +51,15 @@ fun OrderBookRenderer(viewModel: OrderBookViewModel, modifier: Modifier) {
 @Composable
 private fun Content(state: OrderBookUi.State, onAction: (OrderBookUi.Action) -> Unit) {
     val orderBook by state.orderBookFlow.collectAsState(initial = OrderBook.EMPTY)
-    LazyColumn(
+    Column(
         modifier = Modifier
-            .fillMaxSize(),
-        state = rememberLazyListState()
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
-        item {
-            Header()
-        }
-
-        items(
-            count = orderBook.maxOrderListSize,
-            key = { index ->
-                "${orderBook.buyOrderList.orderInfoList.getOrNull(index)}:${orderBook.sellOrderList.orderInfoList.getOrNull(index)}"
-            }
-        ) {index ->
-            val buyOrderInfo = orderBook.buyOrderList.orderInfoList.getOrNull(index)
-            val sellOrderInfo = orderBook.sellOrderList.orderInfoList.getOrNull(index)
+        Header()
+        for (i in 0 until orderBook.maxOrderListSize) {
+            val buyOrderInfo = orderBook.buyOrderList.orderInfoList.getOrNull(i)
+            val sellOrderInfo = orderBook.sellOrderList.orderInfoList.getOrNull(i)
             OrderInfoRow(
                 buyOrderInfo = buyOrderInfo,
                 buyOrderRelativeQuantity = buyOrderInfo?.let {
@@ -115,6 +107,10 @@ private fun HeaderText(text: String, modifier: Modifier, contentAlignment: Align
     }
 }
 
+private val orderInfoRowModifier = Modifier
+    .fillMaxWidth()
+    .padding(horizontal = 16.dp)
+
 @Composable
 private fun OrderInfoRow(
     buyOrderInfo: OrderInfo?,
@@ -123,9 +119,7 @@ private fun OrderInfoRow(
     sellOrderRelativeQuantity: Float
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+        modifier = orderInfoRowModifier
     ) {
         BuyOrderInfoRow(buyOrderInfo, buyOrderRelativeQuantity, Modifier.weight(1f))
         SellOrderInfoRow(sellOrderInfo, sellOrderRelativeQuantity, Modifier.weight(1f))
