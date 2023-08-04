@@ -67,10 +67,6 @@ class OrderBookWebSocketDataSourceImpl: OrderBookDataSource {
     }
 
     private fun handleMessage(text: String) {
-        val hashMap = HashMap<Price, OrderInfo>()
-        hashMap.toSortedMap().map {
-
-        }
         CoroutineScope(orderBookTradesThreadContext).launch {
             val jsonObject = JSONTokener(text).nextValue() as JSONObject
             if (jsonObject.isOrderBook().not()) {

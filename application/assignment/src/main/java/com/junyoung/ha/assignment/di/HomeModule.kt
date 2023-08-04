@@ -30,12 +30,6 @@ class HomeModule {
 
     @Module
     @InstallIn(SingletonComponent::class)
-    class RepositoryModule {
-
-    }
-
-    @Module
-    @InstallIn(SingletonComponent::class)
     class DataSourceModule {
         companion object {
             const val USING_MOCK = false
