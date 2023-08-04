@@ -29,7 +29,6 @@ import com.junyoung.ha.features.common.domain.toFormattedString
 import com.junyoung.ha.features.common.domain.toQuantityFormat
 import com.junyoung.ha.features.orderbook.domain.model.OrderBook
 import com.junyoung.ha.features.orderbook.domain.model.OrderInfo
-import com.junyoung.ha.features.orderbook.domain.model.OrderType
 import com.junyoung.ha.features.orderbook.presentation.OrderBookUi
 import java.math.BigDecimal
 
@@ -62,13 +61,9 @@ private fun Content(state: OrderBookUi.State, onAction: (OrderBookUi.Action) -> 
             val sellOrderInfo = orderBook.sellOrderList.orderInfoList.getOrNull(i)
             OrderInfoRow(
                 buyOrderInfo = buyOrderInfo,
-                buyOrderRelativeQuantity = buyOrderInfo?.let {
-                    orderBook.getRelativeQuantity(OrderType.BUY, it.price)
-                } ?: 0F,
+                buyOrderRelativeQuantity = orderBook.getRelativeQuantity(buyOrderInfo ?: OrderInfo.EMPTY),
                 sellOrderInfo = sellOrderInfo,
-                sellOrderRelativeQuantity = sellOrderInfo?.let {
-                    orderBook.getRelativeQuantity(OrderType.SELL, it.price)
-                } ?: 0f
+                sellOrderRelativeQuantity = orderBook.getRelativeQuantity(sellOrderInfo ?: OrderInfo.EMPTY)
             )
         }
     }

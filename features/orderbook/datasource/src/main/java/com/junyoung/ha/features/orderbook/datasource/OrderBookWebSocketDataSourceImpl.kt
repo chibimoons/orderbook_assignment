@@ -99,8 +99,18 @@ class OrderBookWebSocketDataSourceImpl: OrderBookDataSource {
 
             orderBookMutableFlow.emit(
                 OrderBook(
-                    buyOrderList = buildOrderList(buyOrderInfoMap.toSortedMap(compareBy<Price> { it }.reversed()).toList().subList(0, 20).map { it.second }),
-                    sellOrderList = buildOrderList(sellOrderInfoMap.toSortedMap().toList().subList(0, 20).map { it.second })
+                    buyOrderList = buildOrderList(
+                        buyOrderInfoMap.toSortedMap(compareBy<Price> { it }.reversed())
+                            .toList()
+                            .subList(0, 20)
+                            .map { it.second }
+                    ),
+                    sellOrderList = buildOrderList(
+                        sellOrderInfoMap.toSortedMap()
+                            .toList()
+                            .subList(0, 20)
+                            .map { it.second }
+                    )
                 )
             )
         }
