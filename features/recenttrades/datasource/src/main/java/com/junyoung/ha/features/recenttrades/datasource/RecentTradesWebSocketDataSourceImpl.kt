@@ -46,11 +46,6 @@ class RecentTradesWebSocketDataSourceImpl: RecentTradesDataSource {
             super.onMessage(webSocket, text)
             handleMessage(text)
         }
-
-        override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-            super.onFailure(webSocket, t, response)
-            connect()
-        }
     }
 
     private val recentTradesThreadContext = newSingleThreadContext("RecentTradesWebSocketDataSourceThread")

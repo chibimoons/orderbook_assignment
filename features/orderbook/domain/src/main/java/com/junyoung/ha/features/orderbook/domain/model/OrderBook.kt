@@ -19,7 +19,7 @@ data class OrderBook(
             if (it == BigDecimal.ZERO) {
                 0f
             } else {
-                (orderInfo.cumulativeQuantity / getMaxCumulativeQuantity()).toFloat()
+                (orderInfo.cumulativeQuantity / it).toFloat()
             }
         }
     }
