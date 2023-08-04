@@ -3,6 +3,7 @@ package com.junyoung.ha.features.orderbook.domain.model
 import com.junyoung.ha.features.common.domain.Price
 import java.lang.Integer.max
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 data class OrderBook(
     val buyOrderList: OrderList = OrderList.EMPTY,
@@ -21,10 +22,10 @@ data class OrderBook(
     fun getRelativeQuantity(orderType: OrderType, price: Price): Float {
         return when (orderType) {
             OrderType.BUY -> {
-                buyOrderList.getCumulativeQuantity(price) / getMaxCumulativeQuantity()
+                buyOrderList.getCumulativeQuantity(price).setScale(4, RoundingMode.HALF_EVEN) / getMaxCumulativeQuantity()
             }
             OrderType.SELL -> {
-                sellOrderList.getCumulativeQuantity(price) / getMaxCumulativeQuantity()
+                sellOrderList.getCumulativeQuantity(price).setScale(4, RoundingMode.HALF_EVEN) / getMaxCumulativeQuantity()
             }
         }.toFloat()
     }
