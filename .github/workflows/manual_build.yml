@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: application/assignment/build/outputs/apk/debug/app-debug.apk
+          path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
 
