@@ -30,6 +30,6 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          name: app
+          name: assignment app
           path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
 
