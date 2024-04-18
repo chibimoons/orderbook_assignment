@@ -21,8 +21,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
-      # - name: Build debug APK
-      #   run: bash ./gradlew :application:assignment:assembleDebug --stacktrace
+      - name: Build debug APK
+        run: bash ./gradlew :application:assignment:assembleDebug --stacktrace
 
       - name: Get apk path
         id: apk-path
