@@ -27,21 +27,14 @@ jobs:
       - name: Get apk path
         id: apk-path
         run: |
-          echo "file list"
-          echo $(find ** /build/outputs/apk/debug -name '*.apk' -type f | head -1)
-          echo $(ls ..)
-          echo "file list"
-          echo $(find **/build/outputs/apk/debug -name '*.apk' -type f | head -1)
-          echo $(ls .)
-          echo "file end"
-          path=$(find **/application/assignment/build/outputs/apk -name '*.apk' -type f | head -1)
-          echo "::save-state name={name}::{value}  ::set-output name=path::$path"
-          name=$(find **/application/assignment/build/outputs/apk -name '*.aab' -type f -exec basename {} \; | head -1)
+          path=$(find **/build/outputs/apk/debug -name '*.apk' -type f | head -1)
+          echo "::set-output name=path::$path"
+          name=$(find **/build/outputs/apk/debug -name '*.apk' -type f -exec basename {} \; | head -1)
           echo "::set-output name=name::$name"
           
-      # - name: Upload APK
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: assignment app
-      #     path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: assignment app
+          path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
 
