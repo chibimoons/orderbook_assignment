@@ -14,20 +14,22 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - name: Setup JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-      - name: Build debug APK
-        run: bash ./gradlew :application:assignment:assembleDebug --stacktrace
+      # - uses: actions/checkout@v4
+      # - name: Setup JDK 17
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     java-version: '17'
+      #     distribution: 'temurin'
+      #     cache: gradle
+      # - name: Build debug APK
+      #   run: bash ./gradlew :application:assignment:assembleDebug --stacktrace
 
       - name: Get apk path
         id: apk-path
         run: |
-          echo "$(ls **/application/assignment/build/outputs/apk)"
+          echo "file list"
+          echo "$(ls **/application/assignment/build/outputs)"
+          echo "file end"
           path=$(find **/application/assignment/build/outputs/apk -name '*.apk' -type f | head -1)
           echo "::save-state name={name}::{value}  ::set-output name=path::$path"
           name=$(find **/application/assignment/build/outputs/apk -name '*.aab' -type f -exec basename {} \; | head -1)
