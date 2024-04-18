@@ -29,14 +29,14 @@ jobs:
         run: |
           path=$(find **/build/outputs/apk/debug -name '*.apk' -type f | head -1)
           echo "::set-output name=path::$path"
-          name=$(find **/build/outputs/apk/debug -name '*.apk' -type f -exec basename {} \; | head -1)
-          echo "::set-output name=name::$name"
+          # name=$(find **/build/outputs/apk/debug -name '*.apk' -type f -exec basename {} \; | head -1)
+          # echo "::set-output name=name::$name"
           
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          # name: assignment app
+          name: assignment app
           # path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
-          name: ${{ steps.apk-path.outputs.name }}
+          # name: ${{ steps.apk-path.outputs.name }}
           path: ${{ steps.apk-path.outputs.path }}
 
