@@ -35,6 +35,8 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          name: assignment app
-          path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
+          # name: assignment app
+          # path: application/assignment/build/outputs/apk/debug/assignment-debug.apk
+          name: ${{ steps.apk-path.outputs.name }}
+          path: ${{ steps.apk-path.outputs.path }}
 
