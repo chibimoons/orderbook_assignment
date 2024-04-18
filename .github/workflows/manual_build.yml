@@ -27,10 +27,10 @@ jobs:
       - name: Get apk path
         id: apk-path
         run: |
-          echo "$(ls **)"
-          path=$(find **/build/outputs/apk -name '*.apk' -type f | head -1)
+          echo "$(ls **/application/assignment/build/outputs/apk)"
+          path=$(find **/application/assignment/build/outputs/apk -name '*.apk' -type f | head -1)
           echo "::save-state name={name}::{value}  ::set-output name=path::$path"
-          name=$(find **/build/outputs/apk -name '*.aab' -type f -exec basename {} \; | head -1)
+          name=$(find **/application/assignment/build/outputs/apk -name '*.aab' -type f -exec basename {} \; | head -1)
           echo "::set-output name=name::$name"
           
       # - name: Upload APK
