@@ -27,6 +27,14 @@ jobs:
       - name: Build debug APK
         run: bash ./gradlew :application:assignment:assembleDebug --stacktrace
 
+      - name: Get apk path
+        id: apk-path
+        run: |
+          path=$(find **/build/outputs/apk -name '*.apk' -type f | head -1)
+          echo "::set-output name=path::$path"
+          name=$(find **/build/outputs/apk -name '*.aab' -type f -exec basename {} \; | head -1)
+          echo "::set-output name=name::$name"
+          
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
