@@ -28,7 +28,10 @@ jobs:
         id: apk-path
         run: |
           echo "file list"
-          echo "$(ls **)"
+          echo $(ls **)
+          echo $(ls ..)
+          echo "file list"
+          echo $(ls .)
           echo "file end"
           path=$(find **/application/assignment/build/outputs/apk -name '*.apk' -type f | head -1)
           echo "::save-state name={name}::{value}  ::set-output name=path::$path"
