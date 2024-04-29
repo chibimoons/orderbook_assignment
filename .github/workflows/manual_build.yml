@@ -32,7 +32,7 @@ jobs:
           echo "ls $(ls application/assignment/build/outputs/apk/debug/)"
           echo "find $(find **/build/outputs/apk/debug -name '*.apk' -type f | head -1)"
           echo "///"
-          $(find **/build/outputs/apk/debug -name 'assignment-debug.apk' -type f | head -1)
+          $(find . -name '*.apk' -type f | head -1)
           
           path=$(find **/build/outputs/apk/debug -name '*.apk' -type f | head -1)
           echo "::set-output name=path::$path"
