@@ -27,13 +27,6 @@ jobs:
       - name: Get apk path
         id: apk-path
         run: |
-          echo "pwd $(pwd)"
-          echo "ls $(ls)"
-          echo "ls $(ls application/assignment/build/outputs/apk/debug/)"
-          echo "find $(find application/assignment/build/outputs/apk/debug -name '*.apk' -type f | head -1)"
-          echo "///"
-          $(find . -name '*.apk' -type f | head -1)
-          
           path=$(find application/assignment/build/outputs/apk/debug -name '*.apk' -type f | head -1)
           echo "::set-output name=path::$path"
           name=$(find application/assignment/build/outputs/apk/debug -name '*.apk' -type f -exec basename {} \; | head -1)
