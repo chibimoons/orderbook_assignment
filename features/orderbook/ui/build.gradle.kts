@@ -3,7 +3,7 @@ import com.junyoung.ha.buildsrc.Libraries
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
@@ -27,5 +27,5 @@ dependencies {
     implementation(project(":features:orderbook:presentation"))
 
     implementation(Libraries.Hilt.android)
-    kapt(Libraries.Hilt.compiler)
+    ksp(Libraries.Hilt.compiler)
 }

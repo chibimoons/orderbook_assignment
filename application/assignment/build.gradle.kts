@@ -3,7 +3,7 @@ import com.junyoung.ha.buildsrc.Libraries
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
@@ -38,9 +38,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
 
 dependencies {
 
@@ -60,6 +57,6 @@ dependencies {
     implementation(project(":features:recenttrades:ui"))
 
     implementation(Libraries.Hilt.android)
-    kapt(Libraries.Hilt.compiler)
+    ksp(Libraries.Hilt.compiler)
 
 }

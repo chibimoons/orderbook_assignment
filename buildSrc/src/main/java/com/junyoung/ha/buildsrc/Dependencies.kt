@@ -27,10 +27,10 @@ object Libraries {
     }
 
     object Hilt {
-        const val version = "2.44"
+        const val version = "2.48"
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val android = "com.google.dagger:hilt-android:$version"
-        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+        const val compiler = "com.google.dagger:hilt-compiler:$version"
     }
 
     object Network {

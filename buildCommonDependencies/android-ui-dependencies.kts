@@ -10,7 +10,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
@@ -20,9 +20,8 @@ android {
 }
 
 dependencies {
-    def composeBom = platform(Libraries.AndroidX.Compose.bom)
-    implementation(platform(composeBom))
-    androidTestImplementation(platform(composeBom))
+    implementation(platform(Libraries.AndroidX.Compose.bom))
+    androidTestImplementation(platform(Libraries.AndroidX.Compose.bom))
     debugImplementation(Libraries.AndroidX.Compose.tooling)
 
     implementation(Libraries.AndroidX.Compose.runtime)
